@@ -3,4 +3,8 @@
     <string name="tab_text_1">Alta</string>
     <string name="tab_text_2">Modificación</string>
     <string name="tab_text_3">Listado</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="alta_fragment">Alta</string>
+    <string name="modificacion_fragment">Modificacion</string>
+    <string name="listado_fragment">Listado</string>
 </resources>

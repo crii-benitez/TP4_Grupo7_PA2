@@ -9,6 +9,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.tp4_grupo7_pa2v1.R;
+import com.example.tp4_grupo7_pa2v1.fragmentAlta;
+import com.example.tp4_grupo7_pa2v1.fragmentModificacion;
+import com.example.tp4_grupo7_pa2v1.fragmentListado;
+
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -27,9 +31,12 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        switch (position){
+            case 0: return fragmentAlta.newInstance("asd","asdsa");
+            case 1:  return fragmentModificacion.newInstance("asd","asdsa");
+            case 2: return fragmentListado.newInstance("asd","asdsa");
+        }
+        return null;
     }
 
     @Nullable
