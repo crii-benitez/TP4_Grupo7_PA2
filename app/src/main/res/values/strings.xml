@@ -7,4 +7,12 @@
     <string name="alta_fragment">Alta</string>
     <string name="modificacion_fragment">Modificacion</string>
     <string name="listado_fragment">Listado</string>
+
+    <string-array name="categorias">
+        <item>C</item>
+        <item>C++</item>
+        <item>Java</item>
+        <item>JavaScript</item>
+        <item>VisualBasic</item>
+    </string-array>
 </resources>

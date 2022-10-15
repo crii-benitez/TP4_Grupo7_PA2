@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.tp4_grupo7_pa2v1.ui.main.SectionsPagerAdapter;
 import com.example.tp4_grupo7_pa2v1.databinding.ActivityMainBinding;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = binding.fab;
+
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
