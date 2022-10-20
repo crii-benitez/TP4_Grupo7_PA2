@@ -2,11 +2,15 @@ package com.example.tp4_grupo7_pa2v1;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.example.tp4_grupo7_pa2v1.conexion.DataMainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +27,8 @@ public class fragmentListado extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ListView lvArticulos;
 
     public fragmentListado() {
         // Required empty public constructor
@@ -60,5 +66,16 @@ public class fragmentListado extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_listado, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        lvArticulos = (ListView) getView().findViewById(R.id.lvArticulos);
+        Connect();
+    }
+
+    public void Connect() {
+        DataMainActivity task = new DataMainActivity(lvArticulos,this.getContext());
+        task.execute();
     }
 }
