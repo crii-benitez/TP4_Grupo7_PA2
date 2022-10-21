@@ -6,65 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".fragmentAlta">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner_categorias"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_categorias">
+        android:orientation="vertical"
+        android:padding="15dp">
 
-        <EditText
-            android:id="@+id/tvid"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:ems="10"
-            android:hint="Id number"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="15dp"
+            android:textColor="#9C9C9C"
+            android:textSize="16dp"
+            android:text="@string/id" />
 
         <EditText
+            android:id="@+id/etId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:inputType="number" />
+
+        <TextView
             android:id="@+id/tvName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:ems="10"
-            android:hint="Nombre de producto"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvid" />
+            android:layout_marginTop="15dp"
+            android:textColor="#9C9C9C"
+            android:textSize="16dp"
+            android:text="@string/name_product" />
 
         <EditText
-            android:id="@+id/tvStock"
-            android:layout_width="wrap_content"
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:ems="10"
-            android:hint="Stock"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+            android:layout_marginTop="5dp"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/tvStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="#9C9C9C"
+            android:textSize="16dp"
+            android:text="@string/stock" />
+
+        <EditText
+            android:id="@+id/etStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/tvCategoria"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="56dp"
-            android:text="Categoria"
-            app:layout_constraintStart_toStartOf="@+id/spinner_categorias"
-            app:layout_constraintTop_toBottomOf="@+id/tvStock" />
+            android:layout_marginTop="15dp"
+            android:textColor="#9C9C9C"
+            android:textSize="16dp"
+            android:text="@string/category" />
 
         <Spinner
             android:id="@+id/spinner_categorias"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:layout_marginTop="12dp"
@@ -73,16 +80,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCategoria" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:text="Agregar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_categorias" />
+            android:gravity="center"
+            android:paddingTop="20dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/btnAdd"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="@string/agregar"/>
+        </TableRow>
+
+    </LinearLayout>
 
 </FrameLayout>

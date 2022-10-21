@@ -15,4 +15,15 @@
         <item>JavaScript</item>
         <item>VisualBasic</item>
     </string-array>
+
+    <string name="id">ID</string>
+    <string name="name_product">Nombre de producto</string>
+    <string name="stock">Stock</string>
+    <string name="category">Categoria</string>
+    <string name="buscar">Buscar</string>
+    <string name="agregar">Agregar</string>
+    <string name="modificar">Modificar</string>
+
+
+
 </resources>

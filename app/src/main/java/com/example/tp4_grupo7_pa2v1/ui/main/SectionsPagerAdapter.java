@@ -32,7 +32,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0: return fragmentAlta.newInstance("asd","asdsa");
+            case 0: return fragmentAlta.newInstance();
             case 1:  return fragmentModificacion.newInstance("asd","asdsa");
             case 2: return fragmentListado.newInstance("asd","asdsa");
         }
