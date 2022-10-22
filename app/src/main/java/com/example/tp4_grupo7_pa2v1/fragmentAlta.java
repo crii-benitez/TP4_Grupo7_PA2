@@ -15,10 +15,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.tp4_grupo7_pa2v1.helper.ControlsExtendsHelper;
+import com.example.tp4_grupo7_pa2v1.dao.CargarSpinner;
 
 public class fragmentAlta extends Fragment {
 
     EditText etId, etNombreProducto, etStock, etCategoria;
+    private Spinner spinnerCat;
 
     public fragmentAlta() {
 
@@ -45,8 +47,11 @@ public class fragmentAlta extends Fragment {
         etId = view.findViewById(R.id.etId);
         etNombreProducto = view.findViewById(R.id.etName);
         etStock = view.findViewById(R.id.etStock);
+        spinnerCat = (Spinner) view.findViewById(R.id.spinner_categorias);
 
         Button btnAdd = view.findViewById(R.id.btnAdd);
+
+        //cargarSpinner();
 
         btnAdd.setOnClickListener(view1 -> {
             if (ControlsExtendsHelper.ValidateRequireds(new EditText[] { etId, etNombreProducto, etStock }))
