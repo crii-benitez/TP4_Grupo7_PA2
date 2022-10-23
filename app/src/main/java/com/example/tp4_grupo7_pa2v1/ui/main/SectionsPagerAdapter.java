@@ -33,8 +33,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0: return fragmentAlta.newInstance();
-            case 1:  return fragmentModificacion.newInstance("asd","asdsa");
-            case 2: return fragmentListado.newInstance("asd","asdsa");
+            case 1:  return fragmentModificacion.newInstance();
+            case 2: return fragmentListado.newInstance();
         }
         return null;
     }
@@ -47,7 +47,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
         return 3;
     }
 }

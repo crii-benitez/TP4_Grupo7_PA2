@@ -15,21 +15,14 @@ import java.util.ArrayList;
 
 
 public class DataMainActivity extends AsyncTask<String, Void, String> {
-
-
     private ListView lvArticulos;
     private Context context;
+    private ArrayList<Articulo> articulos = new ArrayList<Articulo>();
 
-    private static String result2;
-    private static ArrayList<Articulo> articulos = new ArrayList<Articulo>();
-
-    //Recibe por constructor el textview
-    //Constructor
     public DataMainActivity(ListView lv, Context ct)
     {
         lvArticulos = lv;
         context = ct;
-
     }
 
     @Override
@@ -41,7 +34,6 @@ public class DataMainActivity extends AsyncTask<String, Void, String> {
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM articulo");
-            result2 = " ";
 
             Articulo articulo;
             while(rs.next()) {
@@ -56,10 +48,10 @@ public class DataMainActivity extends AsyncTask<String, Void, String> {
         }
         catch(Exception e) {
             e.printStackTrace();
-            result2 = "Conexion no exitosa";
+            response = "Conexion no exitosa";
         }
-        return response;
 
+        return response;
     }
 
     @Override
