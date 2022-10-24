@@ -1,6 +1,8 @@
 package com.example.tp4_grupo7_pa2v1.entidad;
 
-public class Articulo {
+import java.io.Serializable;
+
+public class Articulo implements Serializable {
 
     private int id;
     private String nombre;
