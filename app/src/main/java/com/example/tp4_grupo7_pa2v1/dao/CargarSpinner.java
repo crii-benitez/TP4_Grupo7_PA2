@@ -3,22 +3,16 @@ package com.example.tp4_grupo7_pa2v1.dao;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.example.tp4_grupo7_pa2v1.entidad.Categoria;
 import com.example.tp4_grupo7_pa2v1.conexion.DataDB;
 
 public class CargarSpinner extends AsyncTask<String, Void, String> {
-    private static ArrayList<String> listaCategoria = new ArrayList<String>();
-    private static String result2;
-
+    private ArrayList<String> listaCategoria = new ArrayList<String>();
     private Spinner spinnerCat;
     private Context context;
 
@@ -32,11 +26,7 @@ public class CargarSpinner extends AsyncTask<String, Void, String> {
         listaCategoria.clear();
         String response = "";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM categoria");
-            result2 = " ";
+            ResultSet rs = DataDB.ExecuteResultSet("SELECT * FROM categoria");
 
             Categoria categoria;
             while(rs.next()) {
@@ -49,7 +39,7 @@ public class CargarSpinner extends AsyncTask<String, Void, String> {
         }
         catch(Exception e) {
             e.printStackTrace();
-            result2 = "Conexion no exitosa";
+            response = "Conexion no exitosa";
         }
         return response;
     }

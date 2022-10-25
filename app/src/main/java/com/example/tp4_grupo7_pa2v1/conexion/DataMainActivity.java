@@ -30,10 +30,7 @@ public class DataMainActivity extends AsyncTask<String, Void, String> {
         String response = "";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM articulo");
+            ResultSet rs = DataDB.ExecuteResultSet("SELECT * FROM articulo");
 
             Articulo articulo;
             while(rs.next()) {

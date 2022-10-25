@@ -57,7 +57,8 @@ public class fragmentAlta extends Fragment {
 
         Button btnAdd = view.findViewById(R.id.btnAdd);
 
-        //cargarSpinner();
+        CargarSpinner cargarSpinner = new CargarSpinner(spinnerCat, view.getContext());
+        cargarSpinner.execute();
 
         btnAdd.setOnClickListener(view1 -> {
             if (ControlsExtendsHelper.ValidateRequireds(new EditText[] { etId, etNombreProducto, etStock }))

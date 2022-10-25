@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.tp4_grupo7_pa2v1.dao.ObtenerArticulo;
 import com.example.tp4_grupo7_pa2v1.helper.ControlsExtendsHelper;
 
 public class fragmentModificacion extends Fragment {
@@ -40,9 +42,11 @@ public class fragmentModificacion extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
+        Button btnSeach = view.findViewById(R.id.btnSeach);
         EditText etIdSeach = view.findViewById(R.id.etIdSeach);
         EditText etNombreProducto = view.findViewById(R.id.etNameModify);
         EditText etStock = view.findViewById(R.id.etStockModify);
+        Spinner spCategoria = view.findViewById(R.id.spinner_categoriasModify);
 
         Button btnModify = view.findViewById(R.id.btnModify);
 
@@ -58,6 +62,21 @@ public class fragmentModificacion extends Fragment {
             else
             {
                 Toast.makeText(view1.getContext(), "Complete todos los datos para modificar el producto.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnSeach.setOnClickListener(view12 -> {
+            String id = etIdSeach.getText().toString();
+
+            if (!id.equals(""))
+            {
+                ObtenerArticulo obtenerArticulo = new ObtenerArticulo(etIdSeach.getText().toString(),
+                        etNombreProducto, etStock, spCategoria, view12.getContext());
+                obtenerArticulo.execute();
+            }
+            else
+            {
+                Toast.makeText(view12.getContext(), "Debe ingresar un id para poder buscar el artìculo", Toast.LENGTH_SHORT).show();
             }
         });
     }
