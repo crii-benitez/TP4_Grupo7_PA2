@@ -16,8 +16,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.tp4_grupo7_pa2v1.dao.AltaArticulo;
+import com.example.tp4_grupo7_pa2v1.dao.BuscarArticulo;
 import com.example.tp4_grupo7_pa2v1.helper.ControlsExtendsHelper;
 import com.example.tp4_grupo7_pa2v1.dao.CargarSpinner;
+import com.example.tp4_grupo7_pa2v1.entidad.Articulo;
 
 public class fragmentAlta extends Fragment {
 
@@ -63,8 +66,30 @@ public class fragmentAlta extends Fragment {
         btnAdd.setOnClickListener(view1 -> {
             if (ControlsExtendsHelper.ValidateRequireds(new EditText[] { etId, etNombreProducto, etStock }))
             {
-                // TODO: FALTA COMPLETAR, HAY QUE GUARDAR EN LA BD.
-                Toast.makeText(view1.getContext(), "Tengo que guardar en la BD.", Toast.LENGTH_LONG).show();
+                try {
+                    Integer id = Integer.parseInt(etId.getText().toString());
+
+                    BuscarArticulo busqueda = new BuscarArticulo();
+                    busqueda.setId(id);
+
+                    Articulo art = busqueda.execute().get();
+                    if (art != null) {
+                        Toast.makeText(getActivity(), "El ID ingresado ya existe", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    Articulo a = new Articulo(id,etNombreProducto.getText().toString(),
+                            Integer.parseInt(etStock.getText().toString()), spinnerCat.getSelectedItemPosition() +1);
+
+                    AltaArticulo alta = new AltaArticulo();
+                    alta.setArticulo(a);
+
+                    String resultado = alta.execute().get();
+                    Toast.makeText(getActivity(), resultado, Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(), "Error al insertar", Toast.LENGTH_SHORT).show();
+                }
 
                 // Limpio los EditText.
                 ControlsExtendsHelper.ClearTextControls(new EditText[] { etId, etNombreProducto, etStock });
