@@ -14,7 +14,12 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.tp4_grupo7_pa2v1.dao.AltaArticulo;
+import com.example.tp4_grupo7_pa2v1.dao.BuscarArticulo;
+import com.example.tp4_grupo7_pa2v1.dao.CargarSpinner;
+import com.example.tp4_grupo7_pa2v1.dao.ModifyArticulo;
 import com.example.tp4_grupo7_pa2v1.dao.ObtenerArticulo;
+import com.example.tp4_grupo7_pa2v1.entidad.Articulo;
 import com.example.tp4_grupo7_pa2v1.helper.ControlsExtendsHelper;
 
 public class fragmentModificacion extends Fragment {
@@ -48,14 +53,32 @@ public class fragmentModificacion extends Fragment {
         EditText etStock = view.findViewById(R.id.etStockModify);
         Spinner spCategoria = view.findViewById(R.id.spinner_categoriasModify);
 
+        CargarSpinner cargarSpinner = new CargarSpinner(spCategoria, view.getContext());
+        cargarSpinner.execute();
+
         Button btnModify = view.findViewById(R.id.btnModify);
 
         btnModify.setOnClickListener(view1 -> {
-            if (ControlsExtendsHelper.ValidateRequireds(new EditText[] { etNombreProducto, etStock }))
+            if (ControlsExtendsHelper.ValidateRequireds(new EditText[] { etIdSeach, etNombreProducto, etStock }))
             {
-                // TODO: FALTA COMPLETAR, HAY QUE MODIFICAR EN LA BD.
-                Toast.makeText(view1.getContext(), "Tengo que modificar en la BD.", Toast.LENGTH_SHORT).show();
+                try {
+                    Integer id = Integer.parseInt(etIdSeach.getText().toString());
 
+                    BuscarArticulo busqueda = new BuscarArticulo();
+                    busqueda.setId(id);
+
+                    Articulo a = new Articulo(id,etNombreProducto.getText().toString(),
+                            Integer.parseInt(etStock.getText().toString()), spCategoria.getSelectedItemPosition() +1);
+
+                    ModifyArticulo modify = new ModifyArticulo();
+                    modify.setArticulo(a);
+                    String resultado = modify.execute().get();
+                    Toast.makeText(getActivity(), resultado, Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(), "Error al modificar", Toast.LENGTH_SHORT).show();
+                }
                 // Limpio los EditText.
                 ControlsExtendsHelper.ClearTextControls(new EditText[] { etNombreProducto, etStock, etIdSeach });
             }

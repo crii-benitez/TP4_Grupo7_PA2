@@ -16,6 +16,13 @@
             android:textSize="25dp"
             android:paddingTop="15dp"
             android:gravity="center"/>
+
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:text="Actualizar"/>
         <ListView
             android:id="@+id/lvArticulos"
             android:layout_width="match_parent"

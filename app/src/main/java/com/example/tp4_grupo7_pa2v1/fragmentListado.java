@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.tp4_grupo7_pa2v1.conexion.DataMainActivity;
@@ -44,6 +45,14 @@ public class fragmentListado extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         lvArticulos = getView().findViewById(R.id.lvArticulos);
+        Button btnActualizar = getView().findViewById(R.id.btnActualizar);
+
+        btnActualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Connect();
+            }
+        });
         Connect();
     }
 

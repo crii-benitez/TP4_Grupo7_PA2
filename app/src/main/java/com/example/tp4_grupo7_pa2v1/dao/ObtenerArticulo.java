@@ -44,10 +44,6 @@ public class ObtenerArticulo extends AsyncTask<String, Void, String> {
                 articulo.setStock(rs.getInt("stock"));
                 articulo.setIdCategoria(rs.getInt("idCategoria"));
             }
-            else
-            {
-                Toast.makeText(context, "El artículo con id " + id + " no existe.", Toast.LENGTH_SHORT).show();
-            }
 
             response = "Conexion exitosa";
         }
@@ -60,10 +56,17 @@ public class ObtenerArticulo extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        if (articulo != null)
+        if (articulo != null && articulo.getId() != 0)
         {
             etNombre.setText(articulo.getNombre());
             etStock.setText(String.valueOf(articulo.getStock()));
+            spCategoria.setSelection(articulo.getIdCategoria() - 1);
+        }
+        else
+        {
+            etNombre.setText("");
+            etStock.setText("");
+            Toast.makeText(context, "El artículo con id " + id + " no existe.", Toast.LENGTH_SHORT).show();
         }
     }
 
